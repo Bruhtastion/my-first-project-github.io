@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Amorella - Магазин кроссовок</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
+    <style>
+        /* Общие стили */
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fff;
+            color: #000;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            color: #fff;
+            position: relative;
+        }
+
+        .header a img {
+            height: 100px;
+            width: auto;
+            margin-right: 20px;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            font-size: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .auth-links {
+            font-size: 20px;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: #000;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .auth-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 8px 5px;
+            border-radius: 8px;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .slideshow-container {
+            max-width: 800px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .mySlides {
+            display: none;
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .footer {
+    background-color: #000;
+    text-align: center;
+    padding: 10px 0;
+    color: #fff;
+}
+
+.social-links {
+    /* Стили для блока социальных ссылок */
+}
+
+.contact-info ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: left; /* Выравнивание текста по левой грани */
+}
+
+.contact-info ul li {
+    margin-bottom: 10px;
+    text-align: left; /* Выравнивание текста по левой грани */
+}
+
+
+.contact-info ul li {
+    margin-bottom: 10px;
+    margin-left: 50px;
+    
+}
+
+
+        /* Mobile Styles */
+        @media screen and (max-width: 767px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+                position: relative;
+            }
+
+            .header img {
+                width: 40px;
+                height: 40px;
+                position: absolute;
+                top: 20px;
+                left: 20px;
+            }
+
+            .nav-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    margin-top: 80px; /* Это значение может варьироваться в зависимости от высоты вашего логотипа */
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    font-size: 20px;
+    align-items: center;
+    margin-top: 20px; /* Добавляем отступ сверху для кнопок */
+}
+
+
+            .nav-links a {
+                flex: 1;
+                text-align: center;
+                padding: 10px 0;
+                font-size: 11px; /* Уменьшаем размер шрифта для мобильных устройств */
+            }
+
+            .auth-links {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                font-size: 16px; /* Уменьшаем размер шрифта */
+                padding: 8px 16px; /* Уменьшаем отступы */
+            }
+
+            .content {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .filter-box {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .products {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .product {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .product img {
+                height: 200px;
+                object-fit: cover;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="all.html">
+            <img src="photo/5643.png" alt="Amorella Logo">
+        </a>
+        <div class="nav-wrapper">
+            <nav class="nav-links">
+                <a href="Krossovki.html"><h2 style="font-weight: normal;">Кроссовки</h2></a>
+                <a href="Odezhda.html"><h2 style="font-weight: normal;">Одежда</h2></a>
+                <a href="Aksessuary.html"><h2 style="font-weight: normal;">Аксессуары</h2></a>
+                <a href="skidki.html"><h2 style="font-weight: normal;">Скидки</h2></a>
+            </nav>
+        </div>
+        <div class="auth-links">
+            <a href="login.html" id="login-link">Войти / Зарегистрироваться</a>
+        </div>
+        
+        <script>
+            // Эмуляция базы данных пользователей
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+        
+            // ... (остальной код)
+        
+            // Извлекаем сохраненный логин из локального хранилища
+            const currentUser = localStorage.getItem('currentUser');
+        
+            // Получаем ссылку для входа/регистрации
+            const loginLink = document.getElementById('login-link');
+        
+            // Проверяем, существует ли текущий пользователь
+            if (currentUser) {
+                // Если существует, меняем текст ссылки на логин
+                loginLink.textContent = currentUser;
+            }
+        </script>
+    </div>
+
+    <div class="content">
+        <div class="slideshow-container">
+            <div class="mySlides">
+                <img src="photo/суприм.jpg" alt="Slide 1">
+            </div>
+            <div class="mySlides">
+                <img src="photo/OIG2 (4).jpg" alt="Slide 2">
+            </div>
+            <div class="mySlides">
+                <img src="photo/рисунок.jpg" alt="Slide 3">
+            </div>
+            <div class="mySlides">
+                <img src="photo/одежда.jpg" alt="Slide 4">
+            </div>
+            <div class="mySlides">
+                <img src="photo/биг бен.jpg" alt="Slide 5">
+            </div>
+            <!-- Добавьте сколько угодно изображений -->
+        </div>
+    </div>
+    
+    <div class="footer">
+        Обратная связь
+    </div>
+    <div class="footer">
+        <div class="social-links">
+            <!-- Ссылки на социальные сети -->
+        </div>
+        <div class="contact-info">
+            <!-- Информация о контакте -->
+            <ul>
+                <li>Эл.почта: amorella@support.com</li>
+                <li>Адрес: ул. Пушкина д.26, Москва, Россия</li>
+                <li>Номер телефона: +7(911)-121-40-14</li>
+            </ul>
+        </div>
+    </div>
+    
+    
+    <script>
+        // Для переключения слайдов
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slides[slideIndex-1].style.display = "block";  
+
+            // Добавляем автоматическое пролистывание каждые 5 секунд
+            setTimeout(function() {
+                plusSlides(1); // Пролистываем вперёд
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

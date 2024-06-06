@@ -1,0 +1,65 @@
+/* Mobile Styles */
+@media screen and (max-width: 767px) {
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header img {
+        margin-bottom: 5px;
+        align-self: flex-start; /* Логотип слева */
+        width: 40px;
+       height: 40px;
+       margin-top: 0px;
+       margin-left: -300px;
+    }
+
+    .nav-wrapper {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .nav-links {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        gap: 5px; /* Уменьшаем отступы */
+        width: 100%;
+    }
+
+    .nav-links a {
+        flex: 1;
+        text-align: center;
+        padding: 10px -10px;
+        font-size: 11px; /* Уменьшаем размер шрифта для мобильных устройств */
+    }
+    .auth-links a {
+        font-size: 16px; /* Уменьшаем размер шрифта */
+        padding: 8px 16px; /* Уменьшаем отступы */
+    }
+    .content {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .filter-box {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .products {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .product {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .product img {
+        height: 200px;
+        object-fit: cover;
+    }
+}

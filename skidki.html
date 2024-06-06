@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Amorella - Магазин кроссовок</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Odezhda.css">
+    <style>
+        /* Общие стили */
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f1f0ef;
+            color: #000;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            color: #fff;
+            position: relative;
+        }
+
+        .header img {
+            height: 100px;
+            width: auto;
+            margin-right: 20px;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            font-size: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .auth-links {
+            font-size: 20px;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: #000;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .auth-links a {
+            color: #fff;
+            text-decoration: none;
+           
+            font-size: 14px; /* Уменьшаем размер шрифта */
+            padding: 8px 5px; /* Уменьшаем отступы */
+            border-radius: 8px; /* Уменьшаем радиус границ */
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        .filter-box {
+            background-color: #fff;
+            color: #000;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            height: 400px;
+            margin: 20px auto;
+        }
+
+        .filter-box h2 {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .filter-box .size-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filter-box .size-options label {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #ddd;
+        }
+
+        .filter-box .size-options input[type="checkbox"] {
+            display: none;
+        }
+
+        .filter-box .size-options input[type="checkbox"]:checked + label {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .filter-box .price-range {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .filter-box .price-range input[type="number"] {
+            width: 80px;
+            padding: 5px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .filter-box .slider-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .filter-box .slider-container input[type="range"] {
+            width: 100%;
+        }
+
+        .filter-box input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 5px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .product {
+            background-color: #fff;
+            color: #000;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 320px;
+            height: 380px;
+            margin: 40px 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .product-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .product button {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin-top: auto;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .product button:hover {
+            background-color: #333;
+        }
+
+        .footer {
+    background-color: #000;
+    text-align: center;
+    padding: 10px 0;
+    color: #fff;
+}
+
+.social-links {
+    /* Стили для блока социальных ссылок */
+}
+
+.contact-info ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: left; /* Выравнивание текста по левой грани */
+}
+
+.contact-info ul li {
+    margin-bottom: 10px;
+    text-align: left; /* Выравнивание текста по левой грани */
+}
+
+
+.contact-info ul li {
+    margin-bottom: 10px;
+    margin-left: 50px;
+    
+}
+        .price-container {
+    display: flex;
+    align-items: center; /* Центрирование содержимого по вертикали */
+}
+
+.old-price, .new-price {
+    margin-left: -75px; /* Общий отступ по левому краю */
+}
+
+.old-price {
+    color: grey;
+    text-decoration: line-through;
+    text-decoration-color: black;
+    font-size: 0.8em; /* Уменьшенный размер текста старой цены */
+    margin-right: 95px; /* Отступ между старой и новой ценой */
+}
+
+.new-price {
+    color: black; /* Цвет новой цены, можно изменить по желанию */
+    font-size: 1em; /* Увеличенный размер текста новой цены */
+}
+.price-container {
+    display: flex;
+    align-items: center; /* Центрирование содержимого по вертикали */
+}
+
+.old-price2, .new-price2 {
+    margin-left: -75px; /* Общий отступ по левому краю */
+}
+
+.old-price2 {
+    color: grey;
+    text-decoration: line-through;
+    text-decoration-color: black;
+    font-size: 0.8em; /* Уменьшенный размер текста старой цены */
+    margin-right: 90px; /* Отступ между старой и новой ценой */
+}
+
+.new-price2 {
+    color: black; /* Цвет новой цены, можно изменить по желанию */
+    font-size: 1em; /* Увеличенный размер текста новой цены */
+}
+.price-container {
+    display: flex;
+    align-items: center; /* Центрирование содержимого по вертикали */
+}
+
+.old-price3, .new-price3 {
+    margin-left: -75px; /* Общий отступ по левому краю */
+}
+
+.old-price3 {
+    color: grey;
+    text-decoration: line-through;
+    text-decoration-color: black;
+    font-size: 0.8em; /* Уменьшенный размер текста старой цены */
+    margin-right: 90px; /* Отступ между старой и новой ценой */
+}
+
+.new-price3 {
+    color: black; /* Цвет новой цены, можно изменить по желанию */
+    font-size: 1em; /* Увеличенный размер текста новой цены */
+}
+.price-container {
+    display: flex;
+    align-items: center; /* Центрирование содержимого по вертикали */
+}
+
+.old-price4, .new-price4 {
+    margin-left: -75px; /* Общий отступ по левому краю */
+}
+
+.old-price4 {
+    color: grey;
+    text-decoration: line-through;
+    text-decoration-color: black;
+    font-size: 0.8em; /* Уменьшенный размер текста старой цены */
+    margin-right: 90px; /* Отступ между старой и новой ценой */
+}
+
+.new-price4 {
+    color: black; /* Цвет новой цены, можно изменить по желанию */
+    font-size: 1em; /* Увеличенный размер текста новой цены */
+}
+.price-container {
+    display: flex;
+    align-items: center; /* Центрирование содержимого по вертикали */
+}
+
+.old-price5, .new-price5 {
+    margin-left: -75px; /* Общий отступ по левому краю */
+}
+
+.old-price5 {
+    color: grey;
+    text-decoration: line-through;
+    text-decoration-color: black;
+    font-size: 0.8em; /* Уменьшенный размер текста старой цены */
+    margin-right: 90px; /* Отступ между старой и новой ценой */
+}
+
+.new-price5 {
+    color: black; /* Цвет новой цены, можно изменить по желанию */
+    font-size: 1em; /* Увеличенный размер текста новой цены */
+}
+.price-container {
+    display: flex;
+    align-items: center; /* Центрирование содержимого по вертикали */
+}
+
+.old-price6, .new-price6 {
+    margin-left: -75px; /* Общий отступ по левому краю */
+}
+
+.old-price6 {
+    color: grey;
+    text-decoration: line-through;
+    text-decoration-color: black;
+    font-size: 0.8em; /* Уменьшенный размер текста старой цены */
+    margin-right: 90px; /* Отступ между старой и новой ценой */
+}
+
+.new-price6 {
+    color: black; /* Цвет новой цены, можно изменить по желанию */
+    font-size: 1em; /* Увеличенный размер текста новой цены */
+}
+.price-container {
+    display: flex;
+    align-items: center; /* Центрирование содержимого по вертикали */
+}
+
+.old-price7, .new-price7 {
+    margin-left: -75px; /* Общий отступ по левому краю */
+}
+
+.old-price7 {
+    color: grey;
+    text-decoration: line-through;
+    text-decoration-color: black;
+    font-size: 0.8em; /* Уменьшенный размер текста старой цены */
+    margin-right: 95px; /* Отступ между старой и новой ценой */
+}
+
+.new-price7 {
+    color: black; /* Цвет новой цены, можно изменить по желанию */
+    font-size: 1em; /* Увеличенный размер текста новой цены */
+}
+.price-container {
+    display: flex;
+    align-items: center; /* Центрирование содержимого по вертикали */
+}
+
+.old-price8, .new-price8 {
+    margin-left: -75px; /* Общий отступ по левому краю */
+}
+
+.old-price8 {
+    color: grey;
+    text-decoration: line-through;
+    text-decoration-color: black;
+    font-size: 0.8em; /* Уменьшенный размер текста старой цены */
+    margin-right: 95px; /* Отступ между старой и новой ценой */
+}
+
+.new-price8 {
+    color: black; /* Цвет новой цены, можно изменить по желанию */
+    font-size: 1em; /* Увеличенный размер текста новой цены */
+}
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="all.html">
+            <img src="photo/5643.png" alt="Amorella Logo">
+        </a>
+        <div class="nav-wrapper">
+            <nav class="nav-links">
+                <a href="Krossovki.html"><h2 style="font-weight: normal;">Кроссовки</h2></a>
+                <a href="Odezhda.html"><h2 style="font-weight: normal;">Одежда</h2></a>
+                <a href="Aksessuary.html" ><h2 style="font-weight: normal;">Аксессуары</h2></a>
+                <a href="skidki.html"><h2 style="font-weight: normal;">Скидки</h2></a>
+            </nav>
+        </div>
+    </div>
+            </nav>
+        </div>
+        <div class="auth-links">
+            <a href="login.html" id="login-link">Войти / Зарегистрироваться</a>
+        </div>
+        
+        <script>
+            // Эмуляция базы данных пользователей
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+        
+            // ... (остальной код)
+        
+            // Извлекаем сохраненный логин из локального хранилища
+            const currentUser = localStorage.getItem('currentUser');
+        
+            // Получаем ссылку для входа/регистрации
+            const loginLink = document.getElementById('login-link');
+        
+            // Проверяем, существует ли текущий пользователь
+            if (currentUser) {
+                // Если существует, меняем текст ссылки на логин
+                loginLink.textContent = currentUser;
+            }
+        </script>
+        
+
+    <div class="content">
+        <div class="filter-box">
+            <h2>Размер</h2>
+            <div class="size-options">
+                <input type="checkbox" id="size34"><label for="size34">XXS</label>
+                <input type="checkbox" id="size35"><label for="size35">XS</label>
+                <input type="checkbox" id="size36"><label for="size36">S</label>
+                <input type="checkbox" id="size37"><label for="size37">M</label>
+                <input type="checkbox" id="size38"><label for="size38">L</label>
+                <input type="checkbox" id="size39"><label for="size39">XL</label>
+                <input type="checkbox" id="size40"><label for="size40">2XL</label>
+                <input type="checkbox" id="size41"><label for="size41">3XL</label>
+                <input type="checkbox" id="size42"><label for="size42">4XL</label>
+       
+            </div>
+            <h2>Цена</h2>
+            <div class="price-range">
+                <input type="number" id="min-price" placeholder="0₽" min="0">
+                <span>—</span>
+                <input type="number" id="max-price" placeholder="500000₽" min="500000">
+            </div>
+            <div class="slider-container">
+                <input type="range" id="price-slider" min="0" max="10000" step="100">
+            </div>
+            <h2>Поиск</h2>
+            <input type="text" id="search-input" placeholder="Поиск">
+        </div>
+
+        <!-- Блок товаров -->
+        <div class="products">
+            <!-- Первый ряд -->
+            <div class="product">
+                <div class="product-details">
+                    <img src="photo/1792883da8894a0791cb71bb1135aefd.jpg" alt="New Balance Unisex Peaked Cap">
+                    <h3>New Balance Unisex Peaked Cap</h3>
+                    <h3>
+                        <span class="old-price">4 999₽</span>
+                        <span class="new-price">4 199₽</span>
+                    </h3>
+                    <button id="product-details-button" style="width: 250px; height: 50px;border-radius: 15px;">Подробнее</button>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-details">
+                    <img src="photo\cba82e80aad74a3a9135cfdb08ca6446.jpg" alt="EMPORIO ARMANI Men Mechanical">
+                    <h3>EMPORIO ARMANI Men</h3>
+                    <h3>
+                        <span class="old-price2">32 999₽</span>
+                        <span class="new-price2">31 599₽</span>
+                    </h3>
+                    <button id="product-details-button" style="width: 250px; height: 50px;border-radius: 15px;">Подробнее</button>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-details">
+                    <img src="photo\8bbe389f28154e5e896ffe374c796701.jpg" alt="Nike Air Flight Legacy Lakers Home">
+                    <h3>Nike Air Flight Legacy Lakers </h3>
+                    <h3>
+                        <span class="old-price3">7 999₽</span>
+                        <span class="new-price3">6 599₽</span>
+                    </h3>
+                    <button id="product-details-button" style="width: 250px; height: 50px;border-radius: 15px;">Подробнее</button>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-details">
+                    <img src="photo\6f77e81a2a3a43669e71e8d25edc1bf0.jpg" alt="Louis Vuitton Pochette">
+                    <h3>Louis Vuitton Pochette</h3>
+                    <h3>
+                        <span class="old-price4">70 999₽</span>
+                        <span class="new-price4">68 099₽</span>
+                    </h3>
+                    <button id="product-details-button" style="width: 250px; height: 50px;border-radius: 15px;">Подробнее</button>
+                </div>
+                </div>
+                <!-- Второй ряд -->
+                <div class="product">
+                <div class="product-details">
+                <img src="photo\1bda8167f2764c6e8bf92e4435048f71.jpg" alt="BE@RBRICK Art Collection Trendy doll">
+                <h3>BE@RBRICK Art Collection</h3>
+                <h3>
+                    <span class="old-price5">40 999₽</span>
+                    <span class="new-price5">38 789₽</span>
+                </h3>
+                <button id="product-details-button" style="width: 250px; height: 50px;border-radius: 15px;">Подробнее</button>
+                </div>
+                </div>
+                <div class="product">
+                <div class="product-details">
+                <img src="photo\6b059d6c2b094e2cbb19ad4415edf847.jpg" alt="Jordan 1 Low Obsidian Ember Glow">
+                <h3>Jordan 1 Low Obsidian Ember</h3>
+                <h3>
+                    <span class="old-price6">10 899₽</span>
+                    <span class="new-price6">10 599₽</span>
+                </h3>
+                <button id="product-details-button" style="width: 250px; height: 50px;border-radius: 15px;">Подробнее</button>
+                </div>
+                </div>
+                <div class="product">
+                <div class="product-details">
+                <img src="photo\bccc6f6178384c5695a01bbdbf065c3a.jpg" alt="Nike Mid-calf socks Unisex">
+                <h3>Nike Mid-calf socks Unisex</h3>
+                <h3>
+                    <span class="old-price7">3 999₽</span>
+                    <span class="new-price7">2 599₽</span>
+                </h3>
+                <button id="product-details-button" style="width: 250px; height: 50px;border-radius: 15px;">Подробнее</button>
+                </div>
+                </div>
+                <div class="product">
+                <div class="product-details">
+                <img src="photo\9ff38e7d50cd4660a35e3511a8636f04.jpg" alt="GENANX Unisex Sweatshirt">
+                <h3>GENANX Unisex Sweatshirt"</h3>
+                <h3>
+                    <span class="old-price8">4 999₽</span>
+                    <span class="new-price8">3 899₽</span>
+                </h3>
+                <button id="product-details-button" style="width: 250px; height: 50px;border-radius: 15px;">Подробнее</button>
+                </div>
+                </div>
+                </div>
+                </div>
+                
+                <div class="footer">
+                    Обратная связь
+                </div>
+                <div class="footer">
+                    <div class="social-links">
+                        <!-- Ссылки на социальные сети -->
+                    </div>
+                    <div class="contact-info">
+                        <!-- Информация о контакте -->
+                        <ul>
+                            <li>Эл.почта: amorella@support.com</li>
+                            <li>Адрес: ул. Пушкина д.26, Москва, Россия</li>
+                            <li>Номер телефона: +7(911)-121-40-14</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                </body>
+                </html>

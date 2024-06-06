@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Amorella - Магазин кроссовок</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="aksessuary.css">
+    <style>
+        /* Общие стили */
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f1f0ef;
+            color: #000;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            color: #fff;
+            position: relative;
+        }
+
+        .header img {
+            height: 100px;
+            width: auto;
+            margin-right: 20px;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            font-size: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .auth-links {
+            font-size: 20px;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: #000;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .auth-links a {
+            color: #fff;
+            text-decoration: none;
+           
+            font-size: 14px; /* Уменьшаем размер шрифта */
+            padding: 8px 5px; /* Уменьшаем отступы */
+            border-radius: 8px; /* Уменьшаем радиус границ */
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        .filter-box {
+            background-color: #fff;
+            color: #000;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            height: 400px;
+            margin: 20px auto;
+        }
+
+        .filter-box h2 {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .filter-box .size-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filter-box .size-options label {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #ddd;
+        }
+
+        .filter-box .size-options input[type="checkbox"] {
+            display: none;
+        }
+
+        .filter-box .size-options input[type="checkbox"]:checked + label {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .filter-box .price-range {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .filter-box .price-range input[type="number"] {
+            width: 80px;
+            padding: 5px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .filter-box .slider-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .filter-box .slider-container input[type="range"] {
+            width: 100%;
+        }
+
+        .filter-box input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 5px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .product {
+            background-color: #fff;
+            color: #000;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 320px;
+            height: 380px;
+            margin: 40px 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .product-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .product button {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin-top: auto;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .product button:hover {
+            background-color: #333;
+        }
+
+        .footer {
+    background-color: #000;
+    text-align: center;
+    padding: 10px 0;
+    color: #fff;
+}
+
+.social-links {
+    /* Стили для блока социальных ссылок */
+}
+
+.contact-info ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: left; /* Выравнивание текста по левой грани */
+}
+
+.contact-info ul li {
+    margin-bottom: 10px;
+    text-align: left; /* Выравнивание текста по левой грани */
+}
+
+
+.contact-info ul li {
+    margin-bottom: 10px;
+    margin-left: 50px;
+    
+}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="all.html">
+            <img src="photo/5643.png" alt="Amorella Logo">
+        </a>
+        <div class="nav-wrapper">
+            <nav class="nav-links">
+                <a href="Krossovki.html"><h2 style="font-weight: normal;">Кроссовки</h2></a>
+                <a href="Odezhda.html"><h2 style="font-weight: normal;">Одежда</h2></a>
+                <a href="Aksessuary.html" ><h2 style="font-weight: normal;">Аксессуары</h2></a>
+                <a href="skidki.html"><h2 style="font-weight: normal;">Скидки</h2></a>
+            </nav>
+        </div>
+    </div>
+            </nav>
+        </div>
+        <div class="auth-links">
+            <a href="login.html" id="login-link">Войти / Зарегистрироваться</a>
+        </div>
+        
+        <script>
+            // Эмуляция базы данных пользователей
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+        
+            // ... (остальной код)
+        
+            // Извлекаем сохраненный логин из локального хранилища
+            const currentUser = localStorage.getItem('currentUser');
+        
+            // Получаем ссылку для входа/регистрации
+            const loginLink = document.getElementById('login-link');
+        
+            // Проверяем, существует ли текущий пользователь
+            if (currentUser) {
+                // Если существует, меняем текст ссылки на логин
+                loginLink.textContent = currentUser;
+            }
+        </script>
+        
+
+    <div class="content">
+        <div class="filter-box">
+            <h2>Размер</h2>
+            <div class="size-options">
+                <input type="checkbox" id="size34"><label for="size34">34</label>
+                <input type="checkbox" id="size35"><label for="size35">35</label>
+                <input type="checkbox" id="size36"><label for="size36">36</label>
+                <input type="checkbox" id="size37"><label for="size37">37</label>
+                <input type="checkbox" id="size38"><label for="size38">38</label>
+                <input type="checkbox" id="size39"><label for="size39">39</label>
+                <input type="checkbox" id="size40"><label for="size40">40</label>
+                <input type="checkbox" id="size41"><label for="size41">41</label>
+                <input type="checkbox" id="size42"><label for="size42">42</label>
+                <input type="checkbox" id="size43"><label for="size43">43</label>
+                <input type="checkbox" id="size44"><label for="size44">44</label>
+                <input type="checkbox" id="size45"><label for="size45">45</label>
+              
+            </div>
+            <h2>Цена</h2>
+            <div class="price-range">
+                <input type="number" id="min-price" placeholder="0₽" min="0">
+                <span>—</span>
+                <input type="number" id="max-price" placeholder="500000₽" min="0">
+            </div>
+            <div class="slider-container">
+                <input type="range" id="price-slider" min="0" max="10000" step="100">
+            </div>
+            <h2>Поиск</h2>
+            <input type="text" id="search-input" placeholder="Поиск">
+        </div>
+
+        <!-- Блок товаров -->
+        <div class="products">
+            <!-- Первый ряд -->
+            <div class="product">
+                <div class="product-details">
+                    <img src="photo/b8d52f31f45f4cbbb3702850d03c22a2.jpg" alt="COACH Male Belt">
+                    <h3>COACH Male Belt</h3>
+                    <h3>11 699₽</h3>
+                    <button id="product-details-button" style="width: 250px; height: 50px;border-radius: 15px;">Подробнее</button>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-details">
+                    <img src="photo/45b2cbf54639411288b0c49cd255c649.jpg" alt="EMPORIO ARMANI Round Dial Watches Male">
+                    <h3>EMPORIO ARMANI Round Dial</h3>
+                    <h3>25 099₽</h3>
+                    <button id="product-details-button" style="width: 250px; height: 50px;border-radius: 15px;">Подробнее</button>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-details">
+                    <img src="photo/ecd302c85d7b4d14a6f32360a6e39a1c.jpg" alt="LOUIS VUITTON Unisex New Quarterly">
+                    <h3>LOUIS VUITTON Unisex New</h3>
+                    <h3>87 599 ₽</h3>
+                    <button id="product-details-button" style="width: 250px; height: 50px;border-radius: 15px;">Подробнее</button>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-details">
+                    <img src="photo/9b5e01adba6c475b80d16f4fa583c900.jpg" alt="CALVIN KLEIN Men’s Leather Belt Wide">
+                    <h3>CALVIN KLEIN Men’s Leather Belt </h3>
+                    <h3>7 899₽</h3>
+                    <button id="product-details-button" style="width: 250px; height: 50px;border-radius: 15px;">Подробнее</button>
+                </div>
+                </div>
+                <!-- Второй ряд -->
+                <div class="product">
+                <div class="product-details">
+                <img src="photo/5fc4e139a04440b391a1e145b963a23e.jpg" alt="Burberry 4291 Square Sunglasses">
+                <h3>Burberry 4291 Square Sunglasses</h3>
+                <h3>20 399₽</h3>
+                <button id="product-details-button" style="width: 250px; height: 50px;border-radius: 15px;">Подробнее</button>
+                </div>
+                </div>
+                <div class="product">
+                <div class="product-details">
+                <img src="photo/ad04784b19874509974f0d30fce700a2.jpg" alt="TISSOT Male Le Locle Collection Swiss watch">
+                <h3>TISSOT Male Le Locle Collection</h3>
+                <h3>42 999₽</h3>
+                <button id="product-details-button" style="width: 250px; height: 50px;border-radius: 15px;">Подробнее</button>
+                </div>
+                </div>
+                <div class="product">
+                <div class="product-details">
+                <img src="photo/30602e1611374632a2b3e6379e85bd3b.jpg" alt="GUCCI With Double G Ring Silver">
+                <h3>GUCCI With Double G Ring Silver</h3>
+                <h3>21 999₽</h3>
+                <button id="product-details-button" style="width: 250px; height: 50px;border-radius: 15px;">Подробнее</button>
+                </div>
+                </div>
+                <div class="product">
+                <div class="product-details">
+                <img src="photo/45b242c8304048779f849e4a2204ef9c.jpg" alt="Swarovski Female Iconic Swan Necklaces">
+                <h3>Swarovski Female Iconic Swan</h3>
+                <h3>9 799₽</h3>
+                <button id="product-details-button" style="width: 250px; height: 50px;border-radius: 15px;">Подробнее</button>
+                </div>
+                </div>
+                </div>
+                </div>
+                
+                <div class="footer">
+                    Обратная связь
+                </div>
+                <div class="footer">
+                    <div class="social-links">
+                        <!-- Ссылки на социальные сети -->
+                    </div>
+                    <div class="contact-info">
+                        <!-- Информация о контакте -->
+                        <ul>
+                            <li>Эл.почта: amorella@support.com</li>
+                            <li>Адрес: ул. Пушкина д.26, Москва, Россия</li>
+                            <li>Номер телефона: +7(911)-121-40-14</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                </body>
+                </html>
